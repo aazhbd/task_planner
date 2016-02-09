@@ -1,0 +1,8 @@
+.idea
+composer.lock
+composer.phar
+vendor
+.vscode
+db.sqlite3
+webroot/artphp.log
+/nbproject/private/

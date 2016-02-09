@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}{% load i18n %}
+{% block title %} Home {% endblock %}
+
+{% block scripttags %}
+<link href="{% static 'css/jquery.dataTables.css' %}" rel="stylesheet" type="text/css" media="screen" />
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+
+<script type = "text/javascript" >
+        $(document).ready(function () {
+            $('#sortedtable').dataTable({
+                "sPaginationType": "full_numbers",
+                "aLengthMenu": [[25, 50, 114, -1], [25, 50, 114, "All"]],
+                "iDisplayLength": 25,
+                "aaSorting": [[0, 'asc']],
+            });
+        });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="homemsg">
+    {% if msg_body %}
+    <h4>{{msg_body}}</h4>
+    {% endif %}
+</div>
+
+<div style="width: 1024px; margin: 0 auto;">
+    <div class="pure-form pure-form-aligned">
+        <form class="task_form" method="post" action="/home">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Add new task</legend>
+
+                <div class="pure-control-group">
+                    <label for="taskname">Task Name: </label>
+                    <input id="taskname" type="taskname" name="taskname" placeholder="Task Name">
+                </div>
+                <div class="pure-control-group">
+                    <label for="taskstatus">Status</label>
+                    <select id="taskstatus">
+                        <option>To Do</option>
+                        <option>In Progress</option>
+                        <option>Completed</option>
+                    </select>
+                </div>
+                <div class="pure-control-group">
+                    <label for="taskcost">Task Cost: </label>
+                    <input id="taskcost" type="taskcost" name="taskcost" placeholder="Task Cost">
+                </div>
+
+                <button type="submit" class="pure-button pure-button-primary">Add Task</button>
+            </fieldset>
+        </form>
+    </div>
+
+    {% if ptasks %}
+    <table class="pure-table-horizontal" id="sortedtable" style="width: 100%">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Status</td>
+            <td>Cost</td>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Status</td>
+            <td>Cost</td>
+        </tr>
+        </tfoot>
+        <tbody>
+        {% for p in ptasks %}
+        <tr>
+            <td style="width:85px;">{{ p.id }}</td>
+            <td>{{ p.name }}</a></td>
+            <td>{{ p.cost }}</a></td>
+            <td>{{ p.status }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+
+{% endblock %}
