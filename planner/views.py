@@ -17,11 +17,16 @@ def home(request):
         taskname = request.POST.get('taskname', None)
         taskstatus = request.POST.get('taskstatus', None)
         taskcost = request.POST.get('taskcost', None)
+        editmode = request.POST.get('editmode', False)
 
         if taskcost and taskname and taskstatus:
             try:
-                new_task = Task(name=taskname, status=taskstatus, cost=taskcost)
-                new_task.save()
+                if editmode:
+                    ntask = Task.objects.filter(id=editmode).update(name=taskname, status=taskstatus, cost=taskcost)
+                else:
+                    ntask = Task(name=taskname, status=taskstatus, cost=taskcost)
+
+                ntask.save()
             except:
                 context.update({ 'messages' : ['Task details save failed'], })
 
