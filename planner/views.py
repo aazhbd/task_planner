@@ -13,6 +13,18 @@ def home(request):
     context = RequestContext(request)
     context.update({ 'msg_body' : "Task Planner", })
 
+    if request.method == "POST":
+        taskname = request.POST.get('taskname', None)
+        taskstatus = request.POST.get('taskstatus', None)
+        taskcost = request.POST.get('taskcost', None)
+
+        if taskcost and taskname and taskstatus:
+            try:
+                new_task = Task(name=taskname, status=taskstatus, cost=taskcost)
+                new_task.save()
+            except:
+                context.update({ 'messages' : ['Task details save failed'], })
+
     ptasks = Task.objects.all()
     context.update({ 'ptasks' : ptasks, })
 

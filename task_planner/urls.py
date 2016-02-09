@@ -20,5 +20,6 @@ from planner import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^home$', views.home, name='home'),
     url(r'^admin/', admin.site.urls),
 ]
