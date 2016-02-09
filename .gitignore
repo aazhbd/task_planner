@@ -4,5 +4,6 @@ composer.phar
 vendor
 .vscode
 *.sqlite3
+*.pyc
 webroot/artphp.log
 /nbproject/private/
