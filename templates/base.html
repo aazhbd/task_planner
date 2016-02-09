@@ -39,7 +39,7 @@
 							<a href="/home" class="pure-menu-link">Home</a>
 						</li>
 						<li class="pure-menu-item">
-							<a href="/list" class="pure-menu-link">Task List</a>
+							<a href="/home" class="pure-menu-link">Task List</a>
 						</li>
 					</ul>
 				</div>
@@ -52,12 +52,12 @@
 					<a class="pure-button pure-button-primary" href="/signup">Sign Up</a>
 				{% endif %}
 				{% if user.is_authenticated %}
-					{% if user.first_name != "" or user.last_name != "" %}
+					[{% if user.first_name != "" or user.last_name != "" %}
 						{{user.first_name}} {{user.last_name}}
 					{% else %}
 						{{user.username}}
 					{% endif %}
-					<br /><a href="/logout">Logout</a>
+					] <a href="/logout" class="pure-button pure-button-primary">Logout</a>
 				{% endif %}
 			</div>
 
