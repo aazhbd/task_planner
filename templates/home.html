@@ -3,42 +3,42 @@
 {% block title %} Home {% endblock %}
 
 {% block scripttags %}
-<link href="{% static 'css/jquery.dataTables.css' %}" rel="stylesheet" type="text/css" media="screen" />
+<link href="{% static 'css/jquery.dataTables.css' %}" rel="stylesheet" type="text/css" media="screen"/>
 <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
 <script src="{% static 'js/jquery.validate.min.js' %}" type="text/javascript"></script>
 
-<script type = "text/javascript" >
-        $(document).ready(function () {
-            $('#sortedtable').dataTable({
-                "sPaginationType": "full_numbers",
-                "aLengthMenu": [[25, 50, -1], [25, 50, "All"]],
-                "iDisplayLength": 25,
-                "aaSorting": [[0, 'asc']],
-            });
-
-            $("#taskform").validate({
-                ignore: ".ignore",
-                rules: {
-                    taskname: { required: true , maxlength: 70 },
-                    taskstatus:{ required: true, maxlength: 50},
-                    taskcost:{ required: true, maxlength: 6}
-                },
-                messages:{
-                    taskname: {
-                        required: "Enter task details.",
-                        maxlength: "Can't be longer than 70 characters."
-                    },
-                    taskstatus: {
-                        required: "Enter status of the task.",
-                        maxlength: "Can't be longer than 50 characters."
-                    },
-                    taskcost: {
-                        required: "Enter cost.",
-                        maxlength: "Can't be longer than 6 characters."
-                    }
-                }
-            });
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sortedtable').dataTable({
+            "sPaginationType": "full_numbers",
+            "aLengthMenu": [[25, 50, -1], [25, 50, "All"]],
+            "iDisplayLength": 25,
+            "aaSorting": [[0, 'asc']],
         });
+
+        $("#taskform").validate({
+            ignore: ".ignore",
+            rules: {
+                taskname: {required: true, maxlength: 70},
+                taskstatus: {required: true, maxlength: 50},
+                taskcost: {required: true, maxlength: 6}
+            },
+            messages: {
+                taskname: {
+                    required: "Enter task details.",
+                    maxlength: "Can't be longer than 70 characters."
+                },
+                taskstatus: {
+                    required: "Enter status of the task.",
+                    maxlength: "Can't be longer than 50 characters."
+                },
+                taskcost: {
+                    required: "Enter cost.",
+                    maxlength: "Can't be longer than 6 characters."
+                }
+            }
+        });
+    });
 </script>
 {% endblock %}
 
