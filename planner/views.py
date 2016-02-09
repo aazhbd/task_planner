@@ -5,9 +5,6 @@ from django.template.context import RequestContext
 
 from django.contrib.auth.models import User
 from .models import Task
-import sys
-import unicodedata
-import json
 
 
 def viewHome(request):
