@@ -9,7 +9,7 @@ import unicodedata
 import json
 
 
-def home(request):
+def viewHome(request):
     context = RequestContext(request)
     context.update({ 'msg_body' : "Task Planner", })
 
@@ -29,6 +29,15 @@ def home(request):
                 ntask.save()
             except:
                 context.update({ 'messages' : ['Task details save failed'], })
+
+    ptasks = Task.objects.all()
+    context.update({ 'ptasks' : ptasks, })
+
+    return render_to_response("home.html", context_instance=context)
+
+def viewEdit(request):
+    context = RequestContext(request)
+    context.update({'msg_body' : "Edit Task"})
 
     ptasks = Task.objects.all()
     context.update({ 'ptasks' : ptasks, })

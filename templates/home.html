@@ -63,6 +63,7 @@
             <td>Name</td>
             <td>Status</td>
             <td>Cost</td>
+            <td>Edit</td>
         </tr>
         </thead>
         <tfoot>
@@ -71,6 +72,7 @@
             <td>Name</td>
             <td>Status</td>
             <td>Cost</td>
+            <td>Edit</td>
         </tr>
         </tfoot>
         <tbody>
@@ -80,6 +82,7 @@
             <td>{{ p.name }}</a></td>
             <td>{{ p.cost }}</a></td>
             <td>{{ p.status }}</a></td>
+            <td><a class="pure-button pure-button-primary" href="/edit/{{ p.id }}">Edit</a></td>
         </tr>
         {% endfor %}
     </table>
