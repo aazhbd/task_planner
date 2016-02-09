@@ -25,3 +25,10 @@ Running the development server,
 ```
 $ python manage.py runserver
 ```
+
+Open home page at ```http://localhost:8000/```
+Open admin login at ```http://localhost:8000/admin```
+
+# Contact
+
+AAZH (aazhbd@yahoo.com)
