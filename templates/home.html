@@ -10,7 +10,7 @@
         $(document).ready(function () {
             $('#sortedtable').dataTable({
                 "sPaginationType": "full_numbers",
-                "aLengthMenu": [[25, 50, 114, -1], [25, 50, 114, "All"]],
+                "aLengthMenu": [[25, 50, -1], [25, 50, "All"]],
                 "iDisplayLength": 25,
                 "aaSorting": [[0, 'asc']],
             });
@@ -34,8 +34,8 @@
 
                 <div class="pure-control-group">
                     <label for="taskname">Task Name: </label>
-                    <input id="taskname" type="text" name="taskname" placeholder="Task Name">
-                    <input id="editmode" type="hidden" name="editmode">
+                    <input id="taskname" type="text" name="taskname" placeholder="Task Name" value="{{ etask.name }}">
+                    <input id="editmode" type="hidden" name="editmode" value="{{ taskid }}">
                 </div>
                 <div class="pure-control-group">
                     <label for="taskstatus">Status</label>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="pure-control-group">
                     <label for="taskcost">Task Cost: </label>
-                    <input id="taskcost" type="text" name="taskcost" placeholder="Task Cost">
+                    <input id="taskcost" type="text" name="taskcost" placeholder="Task Cost" value="{{ etask.cost }}">
                 </div>
 
                 <button type="submit" class="pure-button pure-button-primary">Add Task</button>
