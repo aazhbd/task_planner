@@ -3,6 +3,6 @@ composer.lock
 composer.phar
 vendor
 .vscode
-db.sqlite3
+*.sqlite3
 webroot/artphp.log
 /nbproject/private/
